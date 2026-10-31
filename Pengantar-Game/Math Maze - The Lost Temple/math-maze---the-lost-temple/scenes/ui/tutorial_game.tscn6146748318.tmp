@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ddffqdrrh2d2e"]
+
+[ext_resource type="Texture2D" uid="uid://idhm05uekmp0" path="res://assets/ui/Petualangan Math Maze_ Main Menu.png" id="1_3p5wy"]
+[ext_resource type="Script" uid="uid://dj87xrnaat3f8" path="res://scenes/ui/tutorial_game.gd" id="1_ohv6x"]
+
+[node name="Tutorial_Game" type="Control" unique_id=1993492099]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ohv6x")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1700423754]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_3p5wy")
+expand_mode = 1
+
+[node name="MenuButton" type="Button" parent="." unique_id=2036877651]
+layout_mode = 0
+offset_left = 537.0
+offset_top = 631.0
+offset_right = 751.0
+offset_bottom = 670.0
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

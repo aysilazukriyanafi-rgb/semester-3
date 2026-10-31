@@ -1,0 +1,230 @@
+[gd_scene format=3 uid="uid://bbkpwi8cffhiu"]
+
+[ext_resource type="Texture2D" uid="uid://cd6e4d3v7oxgf" path="res://assets/environment/BackgroundGame.png" id="1_pa1on"]
+[ext_resource type="PackedScene" uid="uid://bpx37xe5xoias" path="res://scenes/Player/player.tscn" id="3_2p25t"]
+[ext_resource type="Texture2D" uid="uid://c7d7xm5n4w2rx" path="res://assets/characters/frames/walk_up1.png" id="5_gh441"]
+[ext_resource type="Texture2D" uid="uid://dk4kr6hsg1pwh" path="res://assets/characters/frames/walk_up2.png" id="6_pa1on"]
+[ext_resource type="Texture2D" uid="uid://c5qn8nxtp50f0" path="res://assets/characters/frames/walk_down.png" id="6_pimn4"]
+[ext_resource type="Texture2D" uid="uid://cjpt2ramiybyc" path="res://assets/characters/frames/walk_up3.png" id="7_elju3"]
+[ext_resource type="Texture2D" uid="uid://ce4i58bqitjn5" path="res://assets/characters/frames/walk_down2.png" id="7_moho6"]
+[ext_resource type="Texture2D" uid="uid://bl3ni0hseipmf" path="res://assets/environment/gerbang_kecil2.png" id="8_pa1on"]
+[ext_resource type="Texture2D" uid="uid://bhvsmhh4a2qvk" path="res://assets/characters/frames/walk_left2.png" id="8_uqtxl"]
+[ext_resource type="Texture2D" uid="uid://bb3hpj65lstm4" path="res://assets/ui/heart_full1.png" id="9_bhb63"]
+[ext_resource type="Texture2D" uid="uid://db3npcixymg56" path="res://assets/ui/Papan_Soal1.png" id="9_elju3"]
+[ext_resource type="Script" uid="uid://dqx31cflqmula" path="res://scenes/gameplay/health_manager.gd" id="9_i6m2i"]
+[ext_resource type="Script" uid="uid://b8hr3frps21lc" path="res://scenes/gameplay/question_panel.gd" id="9_lb4ud"]
+[ext_resource type="Texture2D" uid="uid://bg4k87u8gvo5p" path="res://assets/characters/frames/walk_left.png" id="9_r4rys"]
+[ext_resource type="Texture2D" uid="uid://dlo1c3bkb2rj0" path="res://assets/characters/frames/walk_right.png" id="10_kq854"]
+[ext_resource type="Texture2D" uid="uid://diljptreps2ok" path="res://assets/ui/heart_empty1.png" id="11_bhb63"]
+[ext_resource type="Texture2D" uid="uid://ble3dpuyhnmtu" path="res://assets/characters/frames/walk_right1.png" id="11_moho6"]
+[ext_resource type="Texture2D" uid="uid://bpp0u8hod4dr3" path="res://assets/ui/papan_nyawa1.png" id="12_i6m2i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m3hu3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_pimn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_moho6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_moho6")
+}],
+"loop": 1,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_uqtxl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uqtxl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_r4rys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_r4rys")
+}],
+"loop": 1,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_kq854")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_moho6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_kq854")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_moho6")
+}],
+"loop": 1,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_gh441")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pa1on")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_elju3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gh441")
+}],
+"loop": 1,
+"name": &"walk_up",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5viw"]
+size = Vector2(157.71805, 128.22491)
+
+[node name="gameplay" type="Node2D" unique_id=1723254537]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=2122334939]
+
+[node name="background" type="Sprite2D" parent="." unique_id=1344844770]
+z_index = -1
+position = Vector2(639.25, 358)
+scale = Vector2(0.75687796, 0.75451654)
+texture = ExtResource("1_pa1on")
+
+[node name="Walls" type="StaticBody2D" parent="background" unique_id=1521240569]
+position = Vector2(-844.58795, -474.476)
+scale = Vector2(1.321217, 1.325352)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="background/Walls" unique_id=1826967578]
+polygon = PackedVector2Array(166, 660, 193, 661, 189, 624, 249, 627, 251, 663, 276, 666, 371, 669, 371, 652, 497, 652, 499, 666, 1009, 664, 1014, 603, 1104, 601, 1107, 566, 1133, 566, 1136, 604, 1226, 605, 1227, 414, 1053, 411, 1050, 522, 1079, 525, 1081, 570, 991, 568, 990, 588, 759, 591, 759, 571, 342, 571, 339, 494, 248, 493, 254, 593, 191, 594, 193, 559, 163, 562)
+
+[node name="player" parent="." unique_id=1199615995 instance=ExtResource("3_2p25t")]
+position = Vector2(28, 17)
+collision_layer = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player" unique_id=106083508]
+position = Vector2(88.00001, 664.99994)
+scale = Vector2(0.28125003, 0.23437503)
+sprite_frames = SubResource("SpriteFrames_m3hu3")
+animation = &"walk_up"
+
+[node name="gate" type="Sprite2D" parent="." unique_id=1638048340]
+position = Vector2(115, 608.00006)
+scale = Vector2(0.34911245, 0.4567567)
+texture = ExtResource("8_pa1on")
+
+[node name="InteractionArea" type="Area2D" parent="gate" unique_id=1409785109]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gate/InteractionArea" unique_id=1260358783]
+position = Vector2(1096.8916, -937.0414)
+scale = Vector2(0.99999964, 0.99999976)
+shape = SubResource("RectangleShape2D_p5viw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="gate/InteractionArea" unique_id=2050825832]
+position = Vector2(2029.3442, -652.42596)
+scale = Vector2(0.9999996, 0.99999964)
+shape = SubResource("RectangleShape2D_p5viw")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="gate/InteractionArea" unique_id=942662117]
+position = Vector2(2549.3218, -175.14812)
+scale = Vector2(0.9999996, 0.99999964)
+shape = SubResource("RectangleShape2D_p5viw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1219547162]
+
+[node name="QuestionPanel" type="Control" parent="CanvasLayer" unique_id=623314436]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_lb4ud")
+
+[node name="QuestionBoard" type="TextureRect" parent="CanvasLayer/QuestionPanel" unique_id=1281332323]
+layout_mode = 0
+offset_left = 366.0
+offset_top = 193.0
+offset_right = 926.0
+offset_bottom = 553.0
+texture = ExtResource("9_elju3")
+expand_mode = 1
+
+[node name="AnswerA" type="Button" parent="CanvasLayer/QuestionPanel" unique_id=1545635966]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 414.0
+offset_right = 638.0
+offset_bottom = 445.0
+
+[node name="AnswerB" type="Button" parent="CanvasLayer/QuestionPanel" unique_id=640895322]
+layout_mode = 0
+offset_left = 657.0
+offset_top = 414.0
+offset_right = 801.0
+offset_bottom = 445.0
+
+[node name="AnswerC" type="Button" parent="CanvasLayer/QuestionPanel" unique_id=47371155]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 458.0
+offset_right = 636.0
+offset_bottom = 489.0
+
+[node name="AnswerD" type="Button" parent="CanvasLayer/QuestionPanel" unique_id=1697614259]
+layout_mode = 0
+offset_left = 657.0
+offset_top = 458.0
+offset_right = 801.0
+offset_bottom = 489.0
+
+[node name="HealthContainer" type="HBoxContainer" parent="CanvasLayer/QuestionPanel" unique_id=1649208943]
+z_index = 2
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 960.0
+offset_top = 25.0
+offset_right = 1088.0
+offset_bottom = 65.0
+script = ExtResource("9_i6m2i")
+heart_full = ExtResource("9_bhb63")
+heart_empty = ExtResource("11_bhb63")
+
+[node name="Heart1" type="TextureRect" parent="CanvasLayer/QuestionPanel/HealthContainer" unique_id=1442853413]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("9_bhb63")
+stretch_mode = 5
+
+[node name="Heart2" type="TextureRect" parent="CanvasLayer/QuestionPanel/HealthContainer" unique_id=1174528750]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("9_bhb63")
+stretch_mode = 5
+
+[node name="Heart3" type="TextureRect" parent="CanvasLayer/QuestionPanel/HealthContainer" unique_id=1216562256]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("9_bhb63")
+stretch_mode = 5
+
+[node name="FeedbackLabel" type="Label" parent="CanvasLayer/QuestionPanel" unique_id=2053922278]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="HealthBackground" type="TextureRect" parent="CanvasLayer" unique_id=138544275]
+z_index = 1
+offset_left = 940.0
+offset_top = 11.0
+offset_right = 1113.0
+offset_bottom = 78.0
+texture = ExtResource("12_i6m2i")
+expand_mode = 1
